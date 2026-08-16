@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { computeFit, makeSeoFilename } from "../lib/resize";
+import { computeFit, computePlacement, makeSeoFilename } from "../lib/resize";
 
 describe("computeFit", () => {
   it("contain centers the image inside the target preserving aspect", () => {
@@ -26,5 +26,27 @@ describe("computeFit", () => {
 describe("makeSeoFilename", () => {
   it("strips extension, sanitizes, and appends target size", () => {
     expect(makeSeoFilename("My  Design!.PNG", 4500, 5400)).toBe("my-design-4500x5400.png");
+  });
+});
+
+describe("computePlacement", () => {
+  it("does not upscale in cover mode when upscale is false", () => {
+    const placement = computePlacement(1000, 500, 800, 800, "cover", false);
+    expect(placement.dw).toBe(1000);
+    expect(placement.dh).toBe(500);
+    expect(placement.dx).toBe(-100);
+    expect(placement.dy).toBe(150);
+  });
+
+  it("still covers when upscaling is allowed", () => {
+    const placement = computePlacement(1000, 500, 800, 800, "cover", true);
+    expect(placement.dw).toBe(800);
+    expect(placement.dh).toBe(800);
+  });
+
+  it("does not upscale in contain mode when upscale is false", () => {
+    const placement = computePlacement(500, 500, 1000, 1000, "contain", false);
+    expect(placement.dw).toBe(500);
+    expect(placement.dh).toBe(500);
   });
 });

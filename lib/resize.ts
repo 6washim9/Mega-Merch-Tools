@@ -33,6 +33,30 @@ export function computeFit(
   return { sx: 0, sy: 0, sw: sourceW, sh: sourceH, dx: (targetW - dw) / 2, dy: (targetH - dh) / 2, dw, dh };
 }
 
+export function computePlacement(
+  sourceW: number,
+  sourceH: number,
+  targetW: number,
+  targetH: number,
+  mode: FitMode,
+  upscale = true
+): FitResult {
+  const fit = computeFit(sourceW, sourceH, targetW, targetH, mode);
+  if (!upscale && mode !== "stretch" && (fit.dw > sourceW || fit.dh > sourceH)) {
+    return {
+      sx: 0,
+      sy: 0,
+      sw: sourceW,
+      sh: sourceH,
+      dx: Math.round((targetW - sourceW) / 2),
+      dy: Math.round((targetH - sourceH) / 2),
+      dw: sourceW,
+      dh: sourceH,
+    };
+  }
+  return fit;
+}
+
 export async function resizeImage(
   source: HTMLCanvasElement,
   targetW: number,
@@ -48,17 +72,14 @@ export async function resizeImage(
   ctx.fillStyle = "#ffffff";
   ctx.fillRect(0, 0, targetW, targetH);
 
-  let { sx, sy, sw, sh, dx, dy, dw, dh } = computeFit(source.width, source.height, targetW, targetH, mode);
-  if (!upscale && mode !== "stretch" && source.width < targetW && source.height < targetH) {
-    sx = 0;
-    sy = 0;
-    sw = source.width;
-    sh = source.height;
-    dx = Math.round((targetW - source.width) / 2);
-    dy = Math.round((targetH - source.height) / 2);
-    dw = source.width;
-    dh = source.height;
-  }
+  const { sx, sy, sw, sh, dx, dy, dw, dh } = computePlacement(
+    source.width,
+    source.height,
+    targetW,
+    targetH,
+    mode,
+    upscale
+  );
 
   ctx.imageSmoothingEnabled = true;
   ctx.imageSmoothingQuality = "high";
