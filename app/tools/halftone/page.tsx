@@ -30,10 +30,12 @@ export default function HalftonePage() {
     if (!ctx) return;
     canvas.width = image.canvas.width;
     canvas.height = image.canvas.height;
+    const source = image.canvas.getContext("2d");
+    if (!source) return;
+    const grid = source.getImageData(0, 0, image.canvas.width, image.canvas.height);
+    const dots = luminanceToDots(grid, options);
     ctx.fillStyle = "#ffffff";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    const grid = ctx.getImageData(0, 0, canvas.width, canvas.height);
-    const dots = luminanceToDots(grid, options);
     ctx.fillStyle = "#000000";
     for (const dot of dots) {
       ctx.beginPath();
