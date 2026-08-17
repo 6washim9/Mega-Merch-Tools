@@ -1,36 +1,40 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Mega Merch Tools
+
+Free, browser-only toolkit for print-on-demand (POD) sellers. Resize, convert, and generate artwork for
+Amazon Merch, Etsy, and other POD platforms — all processing happens on your device, so your designs
+never leave your browser.
+
+## Tools
+
+- **Design Idea Generator** — generate unique POD ideas from niches, styles, seasons, and themes
+- **Resize for Amazon Merch** — batch resize to the exact 4500x5400 PNG Amazon Merch requires
+- **Resize for Etsy & POD** — resize to Etsy and common POD dimensions, or any custom size
+- **Halftone Generator** — convert designs to classic halftone dot patterns
+- **Distress Texture Generator** — generate random grunge and distressed overlay textures
+- **PNG to 300 DPI** — set 300 DPI metadata for print-ready exports
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Command        | Description                |
+| -------------- | -------------------------- |
+| `npm run dev`  | Start the dev server       |
+| `npm run build`| Production build           |
+| `npm test`     | Run the Vitest test suite  |
+| `npm run lint` | Lint with ESLint           |
 
-## Learn More
+## Privacy
 
-To learn more about Next.js, take a look at the following resources:
+All image processing runs client-side using the Canvas API. No files are uploaded to any server.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## License
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+MIT
