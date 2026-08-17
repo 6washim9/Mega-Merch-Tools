@@ -20,6 +20,7 @@ interface Job {
 }
 
 const MAX_FILES = 20;
+const MAX_WORKING_DIMENSION = 10000;
 
 export default function ImageCompressorPage() {
   const [jobs, setJobs] = useState<Job[]>([]);
@@ -33,7 +34,7 @@ export default function ImageCompressorPage() {
     const resolved: Job[] = [];
     for (const file of files.slice(0, MAX_FILES)) {
       try {
-        const loaded = await fileToCanvas(file, 2000);
+        const loaded = await fileToCanvas(file, MAX_WORKING_DIMENSION);
         resolved.push({
           name: file.name,
           base: baseName(file.name),

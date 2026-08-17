@@ -16,6 +16,8 @@ interface ConvertJob {
   error: string | null;
 }
 
+const MAX_WORKING_DIMENSION = 10000;
+
 export default function FormatConverterPage() {
   const [jobs, setJobs] = useState<ConvertJob[]>([]);
   const [format, setFormat] = useState<OutputFormat>(OUTPUT_FORMATS[0]);
@@ -28,7 +30,7 @@ export default function FormatConverterPage() {
     const resolved: ConvertJob[] = [];
     for (const file of files.slice(0, 20)) {
       try {
-        const loaded = await fileToCanvas(file, 4000);
+        const loaded = await fileToCanvas(file, MAX_WORKING_DIMENSION);
         resolved.push({ name: file.name, base: baseName(file.name), loaded, blob: null, error: null });
       } catch {
         resolved.push({
