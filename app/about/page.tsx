@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "About | Mega Merch Tools",
+  title: "About",
   description: "About Mega Merch Tools.",
 };
 

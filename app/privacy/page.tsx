@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | Mega Merch Tools",
+  title: "Privacy Policy",
   description: "Privacy policy for Mega Merch Tools.",
 };
 
