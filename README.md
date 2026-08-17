@@ -12,6 +12,8 @@ never leave your browser.
 - **Halftone Generator** — convert designs to classic halftone dot patterns
 - **Distress Texture Generator** — generate random grunge and distressed overlay textures
 - **PNG to 300 DPI** — set 300 DPI metadata for print-ready exports
+- **Image Compressor** — bulk compress JPG and PNG designs to a target quality or file size
+- **Format Converter** — convert designs between PNG, JPG, and WebP
 
 ## Getting Started
 
@@ -34,6 +36,11 @@ Open http://localhost:3000.
 ## Privacy
 
 All image processing runs client-side using the Canvas API. No files are uploaded to any server.
+
+## Advertising
+
+To enable AdSense ads, copy `.env.example` to `.env.local` and set `NEXT_PUBLIC_ADSENSE_PUBLISHER_ID` to your
+publisher ID (format: `ca-pub-XXXXXXXXXXXXXXXX`). The `AdSlot` component renders nothing when the value is empty.
 
 ## License
 

@@ -3,8 +3,12 @@ import Link from "next/link";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Mega Merch Tools",
+  title: {
+    default: "Mega Merch Tools",
+    template: "%s | Mega Merch Tools",
+  },
   description: "Free browser-based toolkit for print-on-demand sellers",
+  metadataBase: new URL("https://mega-merch-tools.vercel.app"),
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -25,7 +29,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </header>
         {children}
         <footer className="border-t border-border py-6 text-center text-sm text-dim">
-          Free POD tools for print-on-demand sellers — everything runs in your browser.
+          <p>Free POD tools for print-on-demand sellers — everything runs in your browser.</p>
+          <nav className="mt-2 flex flex-wrap items-center justify-center gap-4">
+            <Link href="/about" className="hover:text-accent">
+              About
+            </Link>
+            <Link href="/privacy" className="hover:text-accent">
+              Privacy
+            </Link>
+            <Link href="/terms" className="hover:text-accent">
+              Terms
+            </Link>
+          </nav>
         </footer>
       </body>
     </html>
