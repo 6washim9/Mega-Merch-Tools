@@ -35,4 +35,14 @@ export const TOOLS: ToolMeta[] = [
     title: "PNG to 300 DPI",
     description: "Set 300 DPI metadata for print-ready PNG exports.",
   },
+  {
+    slug: "image-compressor",
+    title: "Image Compressor",
+    description: "Bulk compress JPG and PNG designs to a target quality or file size.",
+  },
+  {
+    slug: "format-converter",
+    title: "Format Converter",
+    description: "Convert designs between PNG, JPG, and WebP in bulk.",
+  },
 ];
