@@ -14,7 +14,7 @@ function crc32(bytes: Uint8Array): number {
   return (crc ^ 0xffffffff) >>> 0;
 }
 
-export function injectPhyS(pngBytes: Uint8Array, xPpm: number, yPpm: number): Uint8Array {
+export function injectPhyS(pngBytes: Uint8Array, xPpm: number, yPpm: number): Uint8Array<ArrayBuffer> {
   const chunkType = new TextEncoder().encode("pHYs");
   const chunkData = new Uint8Array(9);
   const dataView = new DataView(chunkData.buffer);
